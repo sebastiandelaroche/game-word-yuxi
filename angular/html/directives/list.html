@@ -1,0 +1,23 @@
+<div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th ng-if="activeEdit == true || activeDelete == true">Actions</th>
+				<th ng-repeat="column in showColumns">{{column.title}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in showData">
+				<td ng-if="activeEdit == true || activeDelete == true">
+					<button type="button" class="btn btn-link" 
+						ng-click="editDirective(data)" ng-if="activeEdit == true">Edit</button>
+					<button type="button" class="btn btn-link" 
+						ng-click="deleteDirective(data)" ng-if="activeDelete == true">Delete</button>
+				</td>
+				<td ng-repeat="column in showColumns">
+					{{data[column.column]}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
