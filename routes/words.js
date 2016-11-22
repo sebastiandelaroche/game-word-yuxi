@@ -23,9 +23,14 @@ router.post('/', function(req, res, next) {
 
 	word.save(function(err) {
 		if (err) {
-			return res.status(500).json({message: err.message});
+
+			var message = "Internal error";
+			if(err.code === 11000) {
+				message = "The word that is about to create already exists";
+			}
+			return res.status(500).json({message: message});
 		}
-		res.status(200).json({message: 'Se ha creado correctamente la palabra.'});
+		res.status(200).json({message: 'The word was created correctly.'});
 	});
 
 });
@@ -42,10 +47,14 @@ router.put('/', function(req, res, next) {
 	Words.findByIdAndUpdate(word.id, word, function(err, word) {
 
 		if (err) {
-			return res.status(500).json({message: err.message});
+			var message = "Internal error";
+			if(err.code === 11000) {
+				message = "The word you are about to update already exists.";
+			}
+			return res.status(500).json({message: message});			
 		}
 
-		res.status(200).json({message: 'Se ha actualizado correctamente la palabra.'});
+		res.status(200).json({message: 'The word was updated correctly.'});
 	});
 
 });
@@ -58,7 +67,7 @@ router.delete('/', function(req, res, next) {
 			return res.status(500).json({message: err.message});
 		}
 
-		res.status(200).json({message: "Se ha eliminado correctamente."});
+		res.status(200).json({message: "It has been deleted successfully."});
 
 	});
 

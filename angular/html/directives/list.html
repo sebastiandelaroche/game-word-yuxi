@@ -18,6 +18,9 @@
 					{{data[column.column]}}
 				</td>
 			</tr>
+			<tr ng-if="showData.length == 0">
+				<td colspan="{{showColumns.length + 1}}">No items in the list</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

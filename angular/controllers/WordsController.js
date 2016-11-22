@@ -27,6 +27,8 @@ class WordsController {
 		
 		this.words = [];
 		
+		this.message = "";
+
 		this.init();
 	}
 
@@ -38,11 +40,19 @@ class WordsController {
 	}
 
 	create() {
+		
+		var message = document.getElementById("message");
+		message.classList.add("collapse")
+
 		this.modo = "create";
 		this.word.word = "";
 	}
 
 	edit(row) {
+
+		var message = document.getElementById("message");
+		message.classList.add("collapse")
+
 		this.modo = "edit";
 		$('#modal').modal({show: true});
 		this.word = row;
@@ -53,6 +63,12 @@ class WordsController {
 			this.WordsService.delete(row)
 			.then(response => {
 				this.init();
+			})
+			.catch(error => {
+				// alert(error.data.message);
+				this.message = error.data.message;
+				var message = document.getElementById("message");
+				message.classList.remove("collapse")
 			})
 		}
 	}
@@ -68,7 +84,12 @@ class WordsController {
 			modal.modal("hide");
 		})
 		.catch(error => {
-			console.log("error", error)
+			//alert(error.data.message);
+			
+			this.message = error.data.message;
+			var message = document.getElementById("message");
+			message.classList.remove("collapse")
+
 		})
 
 	}
