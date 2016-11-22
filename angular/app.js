@@ -12,7 +12,7 @@ import WordsController from './controllers/WordsController';
 import StartGameController from './controllers/StartGameController';
 
 // Module
-angular.module('game', [
+export default angular.module('game', [
     route,
     'words.controller',
     'startGame.controller'

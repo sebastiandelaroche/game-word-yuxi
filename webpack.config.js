@@ -31,27 +31,4 @@ module.exports = {
             jQuery: "jquery"
         })
     ]
-
-    // module: {
-    //     loaders: [{
-    //         test: /\.html$/,
-    //         loader: 'file?name=templates/[name]-[hash:6].html'
-    //     }, {
-    //         test: /\.css$/,
-    //         loader: "style!css"
-    //     }, {
-    //         test: /\.js$/,
-    //         exclude: /(node_modules)/,
-    //         loader: "ng-annotate?add=true!babel"
-    //     }, {
-    //         test: [/fontawesome-webfont\.svg/, /fontawesome-webfont\.eot/],
-    //         loader: 'file?name=fonts/[name].[ext]'
-    //     }]
-    // },
-    // plugins: [
-    //     new HtmlWebpackPlugin({
-    //         filename: 'index.html',
-    //         template: './lib/index.html'
-    //     })
-    // ]
 };
